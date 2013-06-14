@@ -1,0 +1,22 @@
+set autoscale
+set terminal png
+set output './plots/g10_plot05.png'
+fname2 = './data/lab5_tmp2.csv'
+ 
+set datafile separator ","
+ 
+bin(x, s) = s*int(x/s)
+bw = 0.05
+set boxwidth bw*0.8
+set y2range [0:100]
+set yrange [0:*] 
+set y2label "Cumulative frequency"
+set ytics nomirror
+set y2tics 10 textcolor rgbcolor "blue"
+ 
+set title "Frequency plot"
+set xlabel "Average step time"
+set ylabel "Rerun frequency"
+ 
+plot fname2 using (bin($2,bw)+bw/2):(1.0) smooth frequency ti 'freq' w boxes, \
+fname2 using 2:(1) smooth cumulative axes x1y2 ti 'cumulative' w lines

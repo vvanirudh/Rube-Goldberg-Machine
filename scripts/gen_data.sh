@@ -1,0 +1,15 @@
+#!/bin/bash
+	EXEC_DIR=./bin
+	OUTPUT_DIR=../data
+	OUTERCOUNT=1
+	INNERCOUNT=1
+	cd $EXEC_DIR
+	while [ $OUTERCOUNT -le 100 ]; do
+	INNERCOUNT=1
+		while [ $INNERCOUNT -le 100 ]; do
+			#echo $OUTERCOUNT
+			./cs296_base $OUTERCOUNT > $OUTPUT_DIR/out-$OUTERCOUNT-$INNERCOUNT.txt
+			let INNERCOUNT=INNERCOUNT+1
+			done
+		let OUTERCOUNT=OUTERCOUNT+1
+	done

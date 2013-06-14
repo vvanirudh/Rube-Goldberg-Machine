@@ -1,0 +1,19 @@
+set terminal png;
+set output "./plots/g10_plot01.png";
+set title 'Avg Step Time & Loop Time vs Iteration Value';
+
+set xlabel 'Iteration Values';
+set ylabel 'Step Time Interval';
+
+
+#set title 'Measured';
+#set lc black;
+set grid xtics lt 0 lw .2;
+set grid ytics lt 0 lw .2;
+set datafile separator ",";
+plot "./data/lab05_g10_data.csv" using 2:3 smooth unique title "Avg Step Time" with points, \
+"./data/lab05_g10_data.csv" using 2:7 smooth unique title "Avg Loop Time" with points
+
+
+
+ 
